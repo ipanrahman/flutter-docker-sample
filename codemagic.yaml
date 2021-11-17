@@ -1,6 +1,5 @@
 workflows:
   my-workflow:
-    instance_type: linux
     environment:
       flutter: 2.2.3
       java: 11
