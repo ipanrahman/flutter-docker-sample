@@ -1,0 +1,4 @@
+server
+  port=300
+  protocol=https
+  database
