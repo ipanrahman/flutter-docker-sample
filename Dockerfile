@@ -30,8 +30,8 @@ ENV HOME /home/${USERNAME}
 WORKDIR ${HOME}
 
 # Setup android home
-ENV ANDROID_HOME=$HOME/Android/sdk
-ENV ANDROID_SDK_ROOT=$ANDROID_HOME \
+ENV ANDROID_HOME $HOME/Android/sdk
+ENV ANDROID_SDK_ROOT $ANDROID_HOME \
     PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/emulator
 RUN mkdir -p ${ANDROID_SDK_ROOT}
 ENV PATH "$PATH:${ANDROID_SDK_ROOT}"
@@ -53,8 +53,8 @@ RUN yes | sdkmanager \
 ENV PATH "$PATH:${ANDROID_SDK_ROOT}/platform-tools"
 
 # Setup flutter sdk
-ENV FLUTTER_HOME=${HOME}/flutter
-ENV FLUTTER_VERSION=2.2.3
+ENV FLUTTER_HOME ${HOME}/flutter
+ENV FLUTTER_VERSION 2.2.3
 RUN git clone --depth 1 --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_HOME}
 ENV PATH "${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin"
 RUN yes | flutter doctor --android-licenses \
