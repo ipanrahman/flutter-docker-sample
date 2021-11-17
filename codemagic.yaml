@@ -19,7 +19,7 @@ workflows:
         ignore_failure: true
       - name: Build APK with Flutter
         script: |
-                  - cd . && flutter build apk --debug --flavor develop
+                    cd . && flutter build apk --debug --flavor develop
     artifacts:
       - app/build/outputs/**/**/*.apk
     publishing:
