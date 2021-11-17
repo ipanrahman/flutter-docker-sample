@@ -4,9 +4,22 @@ workflows:
       flutter: 2.2.3
       java: 11
     scripts:
-      - name: Build Android APK
-        working_directory: android
-        script: ./gradlew assembleRelease
+      - name: Set up local.properties
+        script: |
+                    echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: |
+                    cd . && flutter packages pub get
+      - name: Flutter analyze
+        script: |
+                    cd . && flutter analyze
+      - name: Flutter unit tests
+        script: |
+                    cd . && flutter test
+        ignore_failure: true
+      - name: Build APK with Flutter
+        script: |
+                  - flutter build apk --debug --flavor develop
     artifacts:
       - app/build/outputs/**/**/*.apk
     publishing:
