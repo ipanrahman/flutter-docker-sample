@@ -18,7 +18,7 @@ workflows:
         - push
       branch_patterns: 
         - pattern: develop
-          include: false
+          include: true
       cancel_previous_builds: true
     cache:
       cache_paths:
