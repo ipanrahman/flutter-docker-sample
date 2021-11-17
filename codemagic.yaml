@@ -1,0 +1,27 @@
+workflows:
+  my-workflow:
+    instance_type: linux
+    environment:
+      flutter: 2.2.3
+      java: 11
+    scripts:
+      - name: Build Android APK
+        working_directory: android
+        script: ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/**/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - ipan.rahman@gmail.com
+    triggering:
+      events:
+        - push
+      branch_patterns: 
+        - pattern: develop
+          include: false
+      cancel_previous_builds: true
+    cache:
+      cache_paths:
+        - $FLUTTER_ROOT/.pub-cache
+        - $HOME/.gradle/caches
