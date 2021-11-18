@@ -25,7 +25,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - ipan.rahman@gmail.com
+          - ipantaupik97@gmail.com
     triggering:
       events:
         - push
